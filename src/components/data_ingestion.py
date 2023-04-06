@@ -2,6 +2,7 @@ import os
 import sys
 from src.logger import logging
 from src.exception import CustomException
+from src.components.data_transformation import DataTransformation
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
@@ -55,7 +56,10 @@ class DataIngestion:
 ## the following code will test if the data_ingestion.py is working
 ## this code will create an artifact folder and save all the data - raw, test and train
 
-#if __name__ == "__main__":
-#    obj=DataIngestion()
-#    obj.initiate_data_ingestion()
+if __name__ == "__main__":
+    obj=DataIngestion()
+    train_data, test_data = obj.initiate_data_ingestion()
+
+    data_transformation = DataTransformation()
+    data_transformation.initiate_data_transformation(train_data, test_data)
 
